@@ -12,40 +12,40 @@ services:
         value: postgresdb
       - key: DB_POSTGRESDB_HOST
         fromDatabase:
-          name: n8n-db
+          name: n8n-postgres
           property: host
       - key: DB_POSTGRESDB_DATABASE
         fromDatabase:
-          name: n8n-db
+          name: n8n-postgres
           property: database
       - key: DB_POSTGRESDB_PORT
         fromDatabase:
-          name: n8n-db
+          name: n8n-postgres
           property: port
       - key: DB_POSTGRESDB_USER
         fromDatabase:
-          name: n8n-db
+          name: n8n-postgres
           property: user
       - key: DB_POSTGRESDB_PASSWORD
         fromDatabase:
-          name: n8n-db
+          name: n8n-postgres
           property: password
       - key: DB_POSTGRESDB_SCHEMA
         value: public
       - key: WEBHOOK_URL
-        value: https://your-n8n-app.onrender.com/
+        value: https://n8n-render-l4oy.onrender.com/
       - key: N8N_ENCRYPTION_KEY
-        value: YOUR_ENCRYPTION_KEY_HERE
+        value: uA7ddkDQubBVcPf6fBRPWU3
       - key: GENERIC_TIMEZONE
         value: America/Sao_Paulo
       - key: TZ
         value: America/Sao_Paulo
       - key: N8N_LOG_LEVEL
-        value: info
+        value: debug
       - key: EXECUTIONS_DATA_PRUNE
         value: true
       - key: EXECUTIONS_DATA_MAX_AGE
-        value: 168
+        value: 120
       - key: EXECUTIONS_DATA_SAVE_ON_ERROR
         value: all
       - key: EXECUTIONS_DATA_SAVE_ON_SUCCESS
@@ -57,8 +57,8 @@ services:
     disk:
       name: n8n-disk
       mountPath: /home/node/.n8n
-      sizeGB: 5
+      sizeGB: 1
 
 databases:
-  - name: n8n-db
-    plan: basic-1gb
+  - name: n8n-postgres
+    plan: basic-256mb
